@@ -11,41 +11,37 @@ results3 = []
 results4 = []
 
 #guassian distribution
-for n in range(1,10000):
+for n in range(1,1000):
 	results1.append(np.random.randint(1,7,n).mean())
 
 #uniform distribution
-for n in range(1,10000):
-	results2.append(np.random.random(1,7,n).mean())
+for n in range(1,1000):
+	results2.append(np.random.uniform(0,1,n).mean())
 
 #exponential distribution
-for n in range(1,10000):
-	results3.append(np.random.exponential(1,7,n).mean())
+for n in range(1,1000):
+	results3.append(np.random.exponential(1,n).mean())
 
 #poisson distribution
-for n in range(1,10000):
-	results4.append(np.random.poisson(1,7,n).mean())
+for n in range(1,1000):
+	results4.append(np.random.poisson(1,n).mean())
 
-plt.subplot(4,1,1)
-df = pd.DataFrame({'throws':results1})
+df = pd.DataFrame({'normal distribution':results1})
 df.plot(title='LLN (Guassian)',color='r')
 plt.xlabel("N")
 plt.ylabel("Average")
 
-plt.subplot(4,1,2)
-df = pd.DataFrame({'throws':results2})
+df = pd.DataFrame({'uniform distribution':results2})
 df.plot(title='LLN (uniform)',color='r')
 plt.xlabel("N")
 plt.ylabel("Average")
 
-plt.subplot(4,1,3)
-df = pd.DataFrame({'throws':results3})
+df = pd.DataFrame({'exponential distribution':results3})
 df.plot(title='LLN (exponential)',color='r')
 plt.xlabel("N")
 plt.ylabel("Average")
 
-plt.subplot(4,1,4)
-df = pd.DataFrame({'throws':results4})
+df = pd.DataFrame({'poisson distribution':results4})
 df.plot(title='LLN (poisson)',color='r')
 plt.xlabel("N")
 plt.ylabel("Average")
